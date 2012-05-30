@@ -10,10 +10,12 @@ app.use('/_', express.static(__dirname + '/tail'));
 
 var io = require('socket.io').listen(server);
 
-io.sockets.on("connection", function (socket) {
-	socket.emit("news", {hello: "world"});
+var youtube_io = io.of('/youtube');
+youtube_io.on('connection', function (socket) {
+	setTimeout(function () {
+		socket.emit('video', "u1zgFlCw8Aw");
+	}, 3000);
 });
-
 
 server.listen(3000);
 
