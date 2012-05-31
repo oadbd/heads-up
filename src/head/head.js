@@ -8,8 +8,8 @@ $(function () {
 	var youtube_socket = io.connect("http://localhost:3000/youtube");
 	var youtube_ghetto = _.clone(Backbone.Events);
 
-	ghetto.youtube(youtube_socket, youtube_ghetto);
-
+	modules.youtube(youtube_socket, youtube_ghetto);
+	youtube_ghetto.trigger('head_init');
 	youtube_ghetto.trigger("render", $c);
 })
 
