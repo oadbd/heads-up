@@ -1,0 +1,36 @@
+<html class='head'>
+	<head>
+		<title>Heads UP!</title>
+		<link type="text/css" rel="stylesheet" href="/heads-up.css" />
+		
+		<script>
+			_callbacks = {};
+
+            head = function (name, cb) {
+                _callbacks[name] = cb;
+            };
+            tail = function () {};
+            server = function () {};
+		</script>
+		<script src="/lib/jquery.js"></script>
+		<script src="/lib/underscore.js"></script>
+		<script src="/lib/backbone.js"></script>
+       
+       	<script src="/lib/ghettos.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+
+
+		<script src="/modules"></script>
+
+		<script>
+		    $(function () {
+		        ghettos($("#main"));
+		    });
+		</script>
+	</head>
+	<body>
+	    <div id="main" data-component="head"></div>
+	</body>
+</html>
+
+	

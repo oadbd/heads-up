@@ -6,17 +6,34 @@ global.body = function (name, cb) {
 };
 
 var express = require('express'),
+    fs = require('fs'),
     http = require('http');
 
 var app = express();
 var server = http.createServer(app);
 
-app.use(express.static(__dirname + '/head'));
+app.use(express.static(__dirname + '/client'));
 app.use('/lib', express.static(__dirname + '/lib'));
 app.get('/modules', function (req, res) {
-    //loop through each module and return it wrapped in (function () {}());
+    res.writeHead(200, {"Content-Type": "text/javascript"});
+    var path = __dirname + '/modules/'
+    fs.readdir(path, function (err, files) {
+        var processNextFile = function () {
+            if (files.length > 0) {
+                res.write("(function() {\n")
+                var stream = fs.createReadStream(path + files.pop());
+                stream.on('end', function () {
+                    res.write("}());\n");
+                    processNextFile();
+                });
+                stream.pipe(res, {end: false});
+            } else {
+                res.end();
+            }
+        };
+        processNextFile();
+    });
 });
-app.use('/_', express.static(__dirname + '/tail'));
 
 
 //load each module

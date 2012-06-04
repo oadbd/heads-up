@@ -1,0 +1,33 @@
+<html class='tail'>
+	<head>
+		<title>Heads UP! Backend</title>
+		<link type="text/css" rel="stylesheet" href="/heads-up.css" />
+
+		<script>
+			_callbacks = {};
+
+            head = function () {};
+            tail = function (name, cb) {
+                _callbacks[name] = cb;
+            };      
+            server = function () {};
+		</script>
+		<script src="/lib/jquery.js"></script>
+		<script src="/lib/underscore.js"></script>
+		<script src="/lib/backbone.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+
+		<script src="/modules"></script>
+        <script src="/lib/ghettos.js"></script>
+        
+        <script>
+            $(function() {
+                ghettos($("#main"));
+            });
+        </script>
+	</head>
+	<body>
+        <div id="main" data-component="tail"></div>
+	</body>
+</html>
+
