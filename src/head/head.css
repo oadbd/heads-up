@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+}
+
+#main {
+    display: block;
+    overflow: hidden;
+    background-color: black;
+}
+
+div.layout {
+    
+}
+
+.leaf {
+    padding: 10px;
+}
+
+div.content {
+    padding: 5px;
+    height: 100%;
+    border: 5px dashed red;
+    background-color: #DDD;
+    text-align: center;
+}
+
+.content:hover {
+    -webkit-transition: all 0.5s linear;
+    border: 5px dashed blue;
+}

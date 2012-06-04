@@ -8,6 +8,7 @@ body = function () {};
 
 
 $(function () {
+/*
 	$(document.body).append("<div id='c'></div>");
 	
 	var $c = $("#c");
@@ -20,5 +21,6 @@ $(function () {
 	modules.youtube(youtube_socket, youtube_ghetto);
 	youtube_ghetto.trigger('head_init');
 	youtube_ghetto.trigger("render", $c);
+	*/
 });
 
