@@ -1,7 +1,7 @@
 global._callbacks = {};
 global.head = function () {};
 global.tail = function () {};
-global.body = function (name, cb) {
+global.server = function (name, cb) {
     _callbacks[name] = cb;
 };
 
@@ -39,8 +39,11 @@ app.get('/modules', function (req, res) {
 //load each module
 
 
+require('./modules/time.module');
+
 var io = require('socket.io').listen(server);
 for (var name in _callbacks) {
+    console.log("initializing " + name);
     _callbacks[name](io.of("/" + name));    
 }
 

@@ -23,7 +23,7 @@
                     split: 'horizontal',
                     at: 0.5,
                     
-                    top: "TIME",
+                    top: "time",
                     bottom: "WEATHER"
                 },
                 
@@ -78,7 +78,13 @@
             layout($b, config[ab[1]]);
         } else {
             $content.addClass("leaf");
-            $content.append($("<div class='content'></div>").text(config));
+            var ghetto = _.extend({}, Backbone.Events);
+            var $el = $("<div class='content'></div>");
+            $content.append($el);
+            if (_callbacks[config]) {
+                _callbacks[config](io.connect("/" + config), ghetto);
+                ghetto.trigger('render', $el);
+            }
         }
     
     }; 
